@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import { createGlobalStyle } from "styled-components";
+import { BrowserRouter as Router } from "react-router-dom";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -22,6 +23,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <GlobalStyle darkMode />
-    <App />
+    <Router>
+      <App />
+    </Router>
   </React.StrictMode>
 );
