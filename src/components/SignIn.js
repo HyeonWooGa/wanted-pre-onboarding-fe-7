@@ -50,7 +50,7 @@ function SignIn({ setIsSignIn }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await axios.post(
-      "http://ec2-3-38-135-202.ap-northeast-2.compute.amazonaws.com:8000/auth/signin/",
+      "http://ec2-3-38-135-202.ap-northeast-2.compute.amazonaws.com:8000/auth/signin",
       {
         email,
         password,
