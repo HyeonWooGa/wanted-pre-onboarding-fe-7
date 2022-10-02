@@ -1,7 +1,12 @@
-function ToDo() {
+import { useNavigate } from "react-router-dom";
+
+function Todo({ token }) {
+  const navigate = useNavigate();
+
+  if (!token) navigate("/");
   return (
     <>
-      <h1>ToDo</h1>
+      <h1>Todo</h1>
       <p>Here is a list of things to do:</p>
       <ul>
         <li>Learn React</li>
@@ -12,4 +17,4 @@ function ToDo() {
   );
 }
 
-export default ToDo;
+export default Todo;

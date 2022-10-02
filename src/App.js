@@ -1,13 +1,19 @@
+import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from "./Home";
-import ToDo from "./ToDo";
+import Home from "./routes/Home";
+import Todo from "./routes/Todo";
 
 function App() {
+  const [token, setToken] = useState();
+  useEffect(() => {
+    const token = localStorage.getItem("access_token");
+    setToken(token);
+  }, []);
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/todo" element={<ToDo />} />
+        <Route path="/" element={<Home token={token} />} />
+        <Route path="/todo" element={<Todo token={token} />} />
       </Routes>
     </>
   );
