@@ -39,6 +39,7 @@ function UpdateTodo({ todo, token }) {
               onChange={(e) => setUpdateTodo(e.target.value)}
             />
             <input
+              placeholder="완료시 true, 미완료시 false"
               type="text"
               value={isCompleted}
               onChange={(e) => setIsCompleted(e.target.value)}
