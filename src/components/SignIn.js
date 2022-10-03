@@ -45,6 +45,8 @@ const Wrapper = styled.div`
 function SignIn({ setIsSignIn }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [validEmail, setValidEmail] = useState(false);
+  const [validPassword, setValidPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -66,6 +68,26 @@ function SignIn({ setIsSignIn }) {
     access_token ? navigate("/todo") : navigate("/");
   };
 
+  const onEmailChange = (e) => {
+    const {
+      target: { value },
+    } = e;
+    setEmail(value);
+    if (value.split("").includes("@")) {
+      setValidEmail(true);
+    }
+  };
+
+  const onPasswordChange = (e) => {
+    const {
+      target: { value },
+    } = e;
+    setPassword(value);
+    if (value.length >= 8) {
+      setValidPassword(true);
+    }
+  };
+
   return (
     <Wrapper>
       <h1>로그인</h1>
@@ -74,16 +96,18 @@ function SignIn({ setIsSignIn }) {
           type="email"
           placeholder="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={onEmailChange}
         />
         <input
           type="password"
           placeholder="password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={onPasswordChange}
           minLength="8"
         />
-        <button type="submit">로그인</button>
+        <button disabled={!validEmail || !validPassword} type="submit">
+          로그인
+        </button>
       </form>
       <div>
         아직 계정이 없으신가요?{" "}
